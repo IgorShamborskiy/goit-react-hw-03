@@ -1,9 +1,14 @@
-export default function ContactForm () {
+import css from '../Contact/Contact.module.css'
+export default function Contact({ contact: { id, name, number } }) {
     return (
-      <form>
-        <input type="text" name="Name" />
-        <input type="number" name="Number" />
-        <button type="submit">Add contact</button>
-      </form>
+      <div className={css.box}>
+        <div>
+          <p className={css.text}>{name}</p>
+          <p className={css.text}>{number}</p>
+        </div>
+        <button className={css.btn}>
+          Delete
+        </button >
+      </div>
     );
-  };
+  }

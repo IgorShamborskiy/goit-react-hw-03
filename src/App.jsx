@@ -1,19 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import initialContacts from './Contacts.json'
 import './App.css'
 import ContactForm from './components/ContactForm/ContactForm'
+import ContactList from './components/ContactList/ContactList'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+const [contacts, setContacts] = useState(initialContacts);
+
+const addContact = (newContact) =>{
+  setContacts((prevContact)=>{
+   return [...prevContact,newContact];
+  });
+};
+
 
   return (
-    <>
       <div>
-        <ContactForm/>
+        <h1>Phonebook</h1>
+        <ContactForm onAdd ={addContact}/>
+        {/* <SearchBox /> */}
+        <ContactList contacts ={contacts} />
       </div>
-    
-    </>
   )
 }
 
